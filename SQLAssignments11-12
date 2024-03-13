@@ -1,0 +1,100 @@
+SQL Assisgnment - 11
+							
+							
+ 1). KD4_Rahul_83582>select Onum from ORDERS where Snum = (select Snum from CUSTOMERS where Cname = 'Cisneros');
++------+
+| Onum |
++------+
+| 3001 |
+| 3006 |
++------+
+2 rows in set (0.03 sec)	
+
+
+
+
+
+ 2). KD4_Rahul_83582>select distinct Cname,Rating from CUSTOMERS, ORDERS where ORDERS.Cnum=CUSTOMERS.Cnum and Amt > ( select avg(Amt) from ORDERS);
++---------+--------+
+| Cname   | Rating |
++---------+--------+
+| Liu     |    200 |
+| Clemens |    100 |
++---------+--------+
+2 rows in set (0.01 sec)
+					
+
+              
+ 3). KD4_Rahul_83582>select Snum, sum(Amt) from ORDERS group by Snum having sum(Amt)>(select max(Amt) from ORDERS);
++------+----------+
+| Snum | sum(Amt) |
++------+----------+
+| 1001 | 15382.07 |
++------+----------+
+1 row in set (0.00 sec)                                                        
+
+
+
+
+						SQL Assignment - 12
+						
+ 1). KD4_Rahul_83582>select Cname from CUSTOMERS where Rating  = ANY (select Rating from CUSTOMERS where Snum = (select Snum from SALESPEOPLE where Sname = 'Serres'));
++----------+
+| Cname    |
++----------+
+| Giovanni |
+| Liu      |
+| Grass    |
+| Cisneros |
++----------+
+4 rows in set (0.00 sec)
+						
+
+
+
+ 2). KD4_Rahul_83582>select Sname from SALESPEOPLE where Sname != ALL (select Sname from SALESPEOPLE, CUSTOMERS where SALESPEOPLE.City=CUSTOMERS.City);
++---------+
+| Sname   |
++---------+
+| Rifkin  |
+| Axelrod |
++---------+
+2 rows in set (0.00 sec)
+
+
+
+
+3). KD4_Rahul_83582>select Onum from ORDERS where Amt > ANY (select Amt from ORDERS where Cnum= ANY(select Cnum from CUSTOMERS where City='London'));
++------+
+| Onum |
++------+
+| 3002 |
+| 3005 |
+| 3006 |
+| 3009 |
+| 3008 |
+| 3010 |
+| 3011 |
++------+
+7 rows in set (0.00 sec)
+
+
+
+4). KD4_Rahul_83582>select Onum from ORDERS where Amt > ANY (select Min(Amt) from ORDERS where Cnum in(select Cnum from CUSTOMERS where City='London'));
++------+
+| Onum |
++------+
+| 3002 |
+| 3005 |
+| 3006 |
+| 3009 |
+| 3008 |
+| 3010 |
+| 3011 |
++------+
+7 rows in set (0.00 sec)
+
+KD4_Rahul_83582>select Onum from ORDERS where Amt > ANY (select Max(Amt) from ORDERS where Cnum in(select Cnum from CUSTOMERS where City='London'));
+Empty set (0.00 sec)
+
+
