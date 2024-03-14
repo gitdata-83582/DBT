@@ -1,0 +1,97 @@
+                                                        SQL - Assignment - 13
+							
+							
+							
+							
+ 1). KD4_Rahul_83582>select Cname, City,concat (Rating,"(High Rating)") as Rating from CUSTOMERS where Rating>=200 UNION select Cname, City, concat(Rating,"(Low Rating)") as Rating from CUSTOMERS where Rating <200;
++----------+----------+------------------+
+| Cname    | City     | Rating           |
++----------+----------+------------------+
+| Giovanni | Rome     | 200(High Rating) |
+| Liu      | San Jose | 200(High Rating) |
+| Grass    | Berlin   | 300(High Rating) |
+| Cisneros | San Jose | 300(High Rating) |
+| Hoffman  | London   | 100(Low Rating)  |
+| Clemens  | London   | 100(Low Rating)  |
+| Pereira  | Rome     | 100(Low Rating)  |
++----------+----------+------------------+
+
+ 
+ 
+ 
+ 
+                                                        SQL - Assignment - 14
+                                                        
+ 1). KD4_Rahul_83582>select * from SALESPEOPLE;
++------+---------+-----------+------+
+| Snum | Sname   | City      | Comm |
++------+---------+-----------+------+
+| 1001 | Peel    | London    | 0.12 |
+| 1002 | Serres  | San Jose  | 0.13 |
+| 1004 | Motika  | London    | 0.11 |
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
+| 1100 | Blanco  | San Jose  | 0.16 |
+| 1100 | Blanco  | San Jose  | NULL |
++------+---------+-----------+------+
+7 rows in set (0.00 sec)
+                                                       
+
+
+2). KD4_Rahul_83582>delete from ORDERS where Onum=(select Cnum from CUSTOMERS where Cname='Clemens');
+Query OK, 0 rows affected (0.04 sec)
+
+KD4_Rahul_83582>select * from ORDERS;
++------+---------+------------+------+------+
+| Onum | Amt     | Odate      | Cnum | Snum |
++------+---------+------------+------+------+
+| 3001 |   18.69 | 1990-10-03 | 2008 | 1007 |
+| 3003 |  767.19 | 1990-10-03 | 2001 | 1001 |
+| 3002 | 1900.10 | 1990-10-03 | 2007 | 1004 |
+| 3005 | 5160.45 | 1990-10-03 | 2003 | 1002 |
+| 3006 | 1098.16 | 1990-10-03 | 2008 | 1007 |
+| 3009 | 1713.23 | 1990-10-04 | 2002 | 1003 |
+| 3007 |   75.75 | 1990-10-04 | 2004 | 1002 |
+| 3008 | 4723.00 | 1990-10-05 | 2006 | 1001 |
+| 3010 | 1309.95 | 1990-10-06 | 2004 | 1002 |
+| 3011 | 9891.88 | 1990-10-06 | 2006 | 1001 |
++------+---------+------------+------+------+
+10 rows in set (0.00 sec)
+
+
+3). KD4_Rahul_83582>select * from CUSTOMERS;
++------+----------+----------+--------+------+
+| Cnum | Cname    | City     | Rating | Snum |
++------+----------+----------+--------+------+
+| 2001 | Hoffman  | London   |    100 | 1001 |
+| 2002 | Giovanni | Rome     |    100 | 1003 |
+| 2003 | Liu      | San Jose |    200 | 1002 |
+| 2004 | Grass    | Berlin   |    300 | 1002 |
+| 2006 | Clemens  | London   |    100 | 1001 |
+| 2008 | Cisneros | San Jose |    300 | 1007 |
+| 2007 | Pereira  | Rome     |    101 | 1004 |
++------+----------+----------+--------+------+
+7 rows in set (0.00 sec)
+
+KD4_Rahul_83582>update CUSTOMERS set Rating=Rating+100 where City="Rome";
+Query OK, 2 rows affected (0.07 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+KD4_Rahul_83582>select * from CUSTOMERS;
++------+----------+----------+--------+------+
+| Cnum | Cname    | City     | Rating | Snum |
++------+----------+----------+--------+------+
+| 2001 | Hoffman  | London   |    100 | 1001 |
+| 2002 | Giovanni | Rome     |    200 | 1003 |
+| 2003 | Liu      | San Jose |    200 | 1002 |
+| 2004 | Grass    | Berlin   |    300 | 1002 |
+| 2006 | Clemens  | London   |    100 | 1001 |
+| 2008 | Cisneros | San Jose |    300 | 1007 |
+| 2007 | Pereira  | Rome     |    201 | 1004 |
++------+----------+----------+--------+------+
+7 rows in set (0.00 sec)
+
+
+
+ 							
+
