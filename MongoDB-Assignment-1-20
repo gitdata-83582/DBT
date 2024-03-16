@@ -1,0 +1,146 @@
+MongoDB Assignments
+
+ 1). To install Mongo Database we will run following commands on terminal : 
+
+CDAC> show collectionssudo apt-get install gnupg curl
+
+ 2). curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | \
+ sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg \
+ --dearmor
+   	
+ 3). echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/	 			 mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+
+sudo apt-get install -y mongodb-org
+
+ 4). sudo systemctl start mongod
+
+ 5). sudo systemctl daemon-reload
+
+sudo systemctl status mongod
+
+sudo systemctl enable mongod
+
+sudo systemctl stop mongod
+
+
+
+
+ 6). show dbs
+ 
+ 7). use CDAC
+ 
+ 8). show Collections
+ 
+ 9). db.createCollection("LIBRARY")
+ 
+ 10). CDAC> db.LIBRARY.insert({title : 'MongoDB Programming', author : 'Sameer', like : 100})
+ 
+ 11). CDAC> db.LIBRARY.find()
+[
+  {
+    _id: ObjectId('65f56e7acdb41ee07cdb83b0'),
+    title: 'MongoDB Programming',
+    author: 'Sameer',
+    like: 100
+  }
+]
+
+ Desired Id field is - id: ObjectId('65f56e7acdb41ee07cdb83b0
+ 
+ 12). CDAC> db.LIBRARY.insert({title : 'MySQL Programming', authors : ['Jack','Jill'], likes : 200})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('65f56febcdb41ee07cdb83b1') }
+}
+
+ 13). CDAC> db.LIBRARY.find()
+[
+  {
+    _id: ObjectId('65f56e7acdb41ee07cdb83b0'),
+    title: 'MongoDB Programming',
+    author: 'Sameer',
+    like: 100
+  },
+  {
+    _id: ObjectId('65f56febcdb41ee07cdb83b1'),
+    title: 'MySQL Programming',
+    authors: [ 'Jack', 'Jill' ],
+    likes: 200
+  }
+]
+
+
+ 14).CDAC> db.LIBRARY.findOne()
+{
+  _id: ObjectId('65f56e7acdb41ee07cdb83b0'),
+  title: 'MongoDB Programming',
+  author: 'Sameer',
+  like: 100
+}
+
+
+ 15). CDAC> db.LIBRARY.find().pretty()
+[
+  {
+    _id: ObjectId('65f56e7acdb41ee07cdb83b0'),
+    title: 'MongoDB Programming',
+    author: 'Sameer',
+    like: 100
+  },
+  {
+    _id: ObjectId('65f56febcdb41ee07cdb83b1'),
+    title: 'MySQL Programming',
+    authors: [ 'Jack', 'Jill' ],
+    likes: 200
+  }
+]
+
+
+ 16). CDAC> db.LIBRARY.update({author:'Sameer'},{$set:{author:'Sameer Dehadrai'}})
+DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+CDAC> db.LIBRARY.findOne()
+{
+  _id: ObjectId('65f56e7acdb41ee07cdb83b0'),
+  title: 'MongoDB Programming',
+  author: 'Sameer Dehadrai',
+  like: 100
+}
+
+
+ 17). CDAC> db.LIBRARY.remove({like:100})
+DeprecationWarning: Collection.remove() is deprecated. Use deleteOne, deleteMany, findOneAndDelete, or bulkWrite.
+{ acknowledged: true, deletedCount: 1 }
+
+
+CDAC> db.LIBRARY.find()
+[
+  {
+    _id: ObjectId('65f56febcdb41ee07cdb83b1'),
+    title: 'MySQL Programming',
+    authors: [ 'Jack', 'Jill' ],
+    likes: 200
+  }
+]
+
+
+ 18).CDAC> db.LIBRARY.drop()
+true
+
+
+ 19). CDAC> db.CDAC.drop()
+true
+
+ 20).CDAC> exit
+sunbeam@L308-Desktop:~$ 
+
+
+   
+   
